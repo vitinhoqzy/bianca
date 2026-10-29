@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff7f8">
+  <title>Um match para Bianca</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page-shell" id="page-shell">
+    <div class="ambient ambient--one" aria-hidden="true"></div>
+    <div class="ambient ambient--two" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Um match para Bianca, início">
+        <span class="brand__mark">b.</span>
+        <span class="brand__name">um match para Bianca</span>
+      </a>
+      <div class="topbar__actions">
+      <span class="topbar__note"><span class="tiny-heart" aria-hidden="true">♥</span> feito com carinho</span>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar modo noturno" title="Ativar modo noturno"><span id="theme-icon" aria-hidden="true">🌙</span></button>
+      </div>
+    </header>
+
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__copy">
+        <div class="intro-screen" id="intro-screen">
+        <p class="eyebrow"><span aria-hidden="true">✦</span> um quizinho do amor <span aria-hidden="true">✦</span></p>
+        <h1 id="hero-title">Será que você<br>é o <span>crush perfeito</span><br>da Bianca?</h1>
+        <p class="hero__description">Responda algumas perguntinhas e descubra se vocês combinam. Sem pressão — só um pouquinho de romance. 💌</p>
+
+        <form class="nickname-form" id="nickname-form">
+          <label for="nickname">Antes de tudo, como podemos te chamar?</label>
+          <div class="input-wrap">
+            <span class="input-wrap__icon" aria-hidden="true">♡</span>
+            <input id="nickname" name="nickname" type="text" placeholder="Seu nickname" maxlength="24" autocomplete="nickname" required>
+          </div>
+          <button class="button" type="submit">Quero descobrir <span aria-hidden="true">→</span></button>
+          <p class="form-hint">Prometemos que é rapidinho <span aria-hidden="true">🌷</span></p>
+        </form>
+      </div>
+
+        <section class="quiz-screen" id="quiz-screen" hidden aria-label="Quiz de compatibilidade">
+          <div class="question-screen" id="question-screen">
+            <div class="quiz-card">
+              <div class="quiz-topline">
+                <p class="eyebrow" id="question-counter">pergunta 1 de 10</p>
+                <span class="progress-label" id="progress-label">0% respondido</span>
+              </div>
+              <div class="progress-track" id="quiz-progress" role="progressbar" aria-label="Progresso do quiz" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" aria-valuetext="0 de 10 perguntas respondidas">
+                <span class="progress-fill" id="progress-fill"></span>
+              </div>
+              <h2 class="question-title" id="question-title" tabindex="-1"></h2>
+              <p class="question-description" id="question-description">Escolha a opção que mais combina com você.</p>
+              <div class="answer-options" id="answer-options" role="group" aria-labelledby="question-title"></div>
+              <div class="quiz-navigation">
+                <button class="text-button previous-question" id="previous-question" type="button" hidden>← Pergunta anterior</button>
+                <button class="text-button" id="back-to-start" type="button">Voltar ao início</button>
+              </div>
+            </div>
+          </div>
+
+          <section class="result-screen" id="result-screen" hidden aria-labelledby="result-title">
+            <div class="result-card">
+              <p class="eyebrow"><span aria-hidden="true">✦</span> resultado do coração <span aria-hidden="true">✦</span></p>
+              <div class="result-heart" aria-hidden="true">♥</div>
+              <h2 id="result-title" tabindex="-1">Olha só, <span id="result-nickname">crush</span>!</h2>
+              <p class="result-intro">Sua compatibilidade simulada com a Bianca é</p>
+              <p class="match-value"><span id="match-percent">0</span><span>%</span></p>
+              <h3 class="result-tier-title" id="result-tier-title"></h3>
+              <p class="result-message" id="result-message" role="status" aria-live="polite"></p>
+              <p class="ranking-save-status" id="ranking-save-status" role="status" aria-live="polite"></p>
+              <p class="declaration-access-hint">Terminou o quiz? Role até o fim da página para deixar uma declaração. 💌</p>
+              <button class="button share-button" id="share-result" type="button">Copiar resumo do resultado <span aria-hidden="true">▣</span></button>
+              <p class="share-feedback" id="share-feedback" role="status" aria-live="polite"></p>
+              <label class="share-fallback-label" id="share-fallback-label" for="share-fallback" hidden>Selecione e copie o resumo:</label>
+              <textarea class="share-fallback" id="share-fallback" rows="3" readonly hidden></textarea>
+              <a class="button instagram-button" href="https://www.instagram.com/eyesdest/" target="_blank" rel="noopener noreferrer">
+                Conhecer o Instagram da Bianca <span aria-hidden="true">↗</span>
+              </a>
+              <button class="text-button" id="review-answers" type="button">← Rever respostas</button>
+              <button class="text-button restart-button" id="restart-quiz" type="button">Fazer o quiz de novo</button>
+            </div>
+          </section>
+        </section>
+      </div>
+
+      <aside class="hero-art" aria-label="Ilustração romântica com a foto da Bianca">
+        <div class="sparkle sparkle--one" aria-hidden="true">✦</div>
+        <div class="sparkle sparkle--two" aria-hidden="true">✧</div>
+        <div class="orbit orbit--outer" aria-hidden="true"></div>
+        <div class="orbit orbit--inner" aria-hidden="true"></div>
+        <div class="portrait-card">
+          <div class="portrait-card__top"><span>para o crush</span><span aria-hidden="true">♡</span></div>
+          <img class="bianca-photo" src="assets/bianca.jpg" alt="Bianca em uma foto no espelho" loading="eager">
+          <div class="portrait-card__bottom">
+            <span class="portrait-card__flower" aria-hidden="true">✿</span>
+            <div><strong>Bianca</strong><small>em busca de um match ✨</small></div>
+          </div>
+        </div>
+        <span class="floating-note floating-note--left" aria-hidden="true">♡</span>
+        <span class="floating-note floating-note--right" aria-hidden="true">✿</span>
+        <span class="floating-note floating-note--bottom" aria-hidden="true">♥</span>
+      </aside>
+    </section>
+
+    <section class="declaration-section" id="declaration-section" aria-labelledby="declaration-title" hidden>
+      <p class="eyebrow"><span aria-hidden="true">✦</span> um recadinho do coração <span aria-hidden="true">✦</span></p>
+      <h2 id="declaration-title">Quer deixar uma declaração para a Bianca?</h2>
+      <p class="declaration-intro">Escreva uma mensagem carinhosa. Só a Bianca poderá ler as declarações recebidas.</p>
+      <form class="declaration-form" id="declaration-form">
+        <input class="declaration-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Deixe este campo vazio">
+        <label for="declaration-nickname">Como podemos te chamar?</label>
+        <input id="declaration-nickname" name="nickname" type="text" maxlength="40" autocomplete="nickname" placeholder="Seu nickname" readonly required>
+        <label for="declaration-message">Sua declaração</label>
+        <textarea id="declaration-message" name="message" rows="5" maxlength="1000" placeholder="Escreva sua mensagem para ela..." required></textarea>
+        <p class="declaration-counter" id="declaration-counter">0 / 1000 caracteres</p>
+        <button class="button" id="declaration-submit" type="submit" disabled>Enviar para a Bianca <span aria-hidden="true">♡</span></button>
+        <p class="declaration-feedback" id="declaration-feedback" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <footer class="footer"><span>feito com <span class="footer__heart" aria-label="amor">♥</span> e boas intenções</span><span>© Bianca <span id="year"></span></span></footer>
+  </main>
+
+  <!-- O player fica fora do conteúdo do quiz para continuar entre as telas. -->
+  <aside class="music-dock" id="music-dock" aria-label="Música de fundo">
+    <div class="music-dock__heading">
+      <div>
+        <p class="music-dock__eyebrow">trilha sonora</p>
+        <h2 class="music-dock__title">Máquina do Tempo</h2>
+        <p class="music-dock__artist">Matuê · Spotify</p>
+      </div>
+      <div class="music-dock__controls">
+        <button class="music-minimize" id="music-minimize" type="button" aria-label="Minimizar player de música" title="Minimizar player">−</button>
+        <button class="music-toggle" id="music-toggle" type="button" aria-label="Carregar e tocar Máquina do Tempo, de Matuê" aria-pressed="false" aria-controls="spotify-embed">
+          <span id="music-toggle-icon" aria-hidden="true">▶</span>
+          <span id="music-toggle-label">Tocar</span>
+        </button>
+      </div>
+    </div>
+    <div class="spotify-embed" id="spotify-embed" hidden></div>
+    <p class="music-status" id="music-status" role="status" aria-live="polite">A música só será carregada quando você tocar em “Tocar”.</p>
+    <a class="music-link" href="https://open.spotify.com/track/5oI9blwsXC8AkTWw6wASY8" target="_blank" rel="noopener noreferrer">Abrir no Spotify <span aria-hidden="true">↗</span></a>
+  </aside>
+  <button class="music-restore" id="music-restore" type="button" aria-label="Mostrar player de música" title="Mostrar player de música" aria-controls="music-dock" hidden>
+    <span aria-hidden="true">♫</span>
+  </button>
+</body>
+</html>

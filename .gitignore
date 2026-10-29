@@ -1,0 +1,8 @@
+# Arquivos gerados pelo processo de publicação da Netlify.
+dist/
+.netlify/
+
+# Segredos locais nunca devem ir para o Git.
+.env
+.env.*
+!.env.example

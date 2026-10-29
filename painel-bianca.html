@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff7f8">
+  <title>Painel da Bianca — Um match para Bianca</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/@supabase/supabase-js@2" defer></script>
+  <script src="supabase-config.js" defer></script>
+  <script src="painel-bianca.js" defer></script>
+</head>
+<body>
+  <main class="page-shell admin-shell">
+    <div class="ambient ambient--one" aria-hidden="true"></div>
+    <div class="ambient ambient--two" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Voltar ao quiz da Bianca">
+        <span class="brand__mark">b.</span>
+        <span class="brand__name">painel da Bianca</span>
+      </a>
+      <button class="theme-toggle" id="admin-theme-toggle" type="button" aria-label="Ativar modo noturno" title="Ativar modo noturno"><span id="admin-theme-icon" aria-hidden="true">🌙</span></button>
+    </header>
+
+    <section class="admin-content" aria-labelledby="admin-title">
+      <div class="admin-heading">
+        <p class="eyebrow"><span aria-hidden="true">✦</span> área exclusiva <span aria-hidden="true">✦</span></p>
+        <h1 id="admin-title">Cantinho da Bianca</h1>
+        <p class="admin-subtitle">Declarações e resultados do quiz, só para você. 💌</p>
+      </div>
+
+      <section class="admin-card admin-login" id="admin-login-section" aria-labelledby="login-title">
+        <h2 id="login-title">Entrar no painel</h2>
+        <p class="admin-muted">Use o e-mail e a senha da conta criada para a Bianca no Supabase.</p>
+        <form id="admin-login-form">
+          <label for="admin-email">E-mail</label>
+          <input id="admin-email" name="email" type="email" autocomplete="username" required>
+          <label for="admin-password">Senha</label>
+          <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+          <button class="button" id="admin-login-button" type="submit">Entrar no painel <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="admin-feedback" id="admin-login-feedback" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="admin-dashboard" id="admin-dashboard" hidden aria-label="Conteúdo privado da Bianca">
+        <div class="admin-dashboard__top">
+          <p class="admin-muted" id="admin-welcome"></p>
+          <button class="text-button admin-logout" id="admin-logout" type="button">Sair</button>
+        </div>
+
+        <section class="admin-card" aria-labelledby="ranking-title">
+          <div class="admin-section-heading">
+            <div>
+              <p class="eyebrow">quem mais combinou</p>
+              <h2 id="ranking-title">Ranking de acertos</h2>
+            </div>
+            <span class="admin-heading-icon" aria-hidden="true">🏆</span>
+          </div>
+          <p class="admin-muted">Ordenado pela compatibilidade e, em caso de empate, pelo número de acertos.</p>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th scope="col">#</th><th scope="col">Nickname</th><th scope="col">Acertos</th><th scope="col">Match</th></tr></thead>
+              <tbody id="ranking-list"><tr><td colspan="4">Carregando ranking…</td></tr></tbody>
+            </table>
+          </div>
+          <p class="admin-feedback" id="ranking-feedback" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="admin-card" aria-labelledby="declarations-title">
+          <div class="admin-section-heading">
+            <div>
+              <p class="eyebrow">recadinhos recebidos</p>
+              <h2 id="declarations-title">Declarações</h2>
+            </div>
+            <span class="admin-heading-icon" aria-hidden="true">💌</span>
+          </div>
+          <div class="declarations-list" id="declarations-list" aria-live="polite">
+            <p class="admin-muted">Carregando declarações…</p>
+          </div>
+          <p class="admin-feedback" id="declarations-feedback" role="status" aria-live="polite"></p>
+        </section>
+      </section>
+
+      <p class="admin-config-note" id="admin-config-note" hidden>O painel ainda precisa ser conectado ao Supabase. A Bianca deve criar a conta e configurar o banco antes do primeiro acesso.</p>
+    </section>
+
+    <footer class="footer"><a href="index.html">Voltar ao quiz</a><span>© Bianca <span id="year"></span></span></footer>
+  </main>
+</body>
+</html>
