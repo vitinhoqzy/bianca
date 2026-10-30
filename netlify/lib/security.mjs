@@ -34,7 +34,8 @@ export function textoValido(valor, minimo, maximo) {
 
 function segredoSupabase() {
   const url = process.env.SUPABASE_URL;
-  const chave = process.env.SUPABASE_SECRET_KEY;
+  // Usa o nome da variável configurada no Netlify para a chave privada do Supabase.
+  const chave = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !chave) throw new Error("SUPABASE_ENV_MISSING");
   return { url: url.replace(/\/$/, ""), chave };
 }
