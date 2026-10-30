@@ -188,7 +188,7 @@ function atualizarBotaoMusica(estaTocando) {
   iconeBotaoMusica.textContent = estaTocando ? "Ⅱ" : "▶";
   rotuloBotaoMusica.textContent = estaTocando ? "Pausar" : "Tocar";
   botaoMusica.setAttribute("aria-pressed", String(estaTocando));
-  botaoMusica.setAttribute("aria-label", (estaTocando ? "Pausar" : "Tocar") + " Máquina do Tempo, de Matuê");
+  botaoMusica.setAttribute("aria-label", (estaTocando ? "Pausar" : "Tocar") + " Oh My Baby, de Brandão");
 }
 
 // Cria o player oficial do Spotify somente depois do primeiro toque.
@@ -207,7 +207,7 @@ function carregarPlayerSpotify() {
     iframeApi.createController(
       areaSpotify,
       {
-        uri: "spotify:track:5oI9blwsXC8AkTWw6wASY8",
+        uri: "spotify:track:0Wjkwg7C7ch95ubHhiWDvn",
         width: 350,
         height: 152
       },
@@ -218,12 +218,12 @@ function carregarPlayerSpotify() {
         atualizarBotaoMusica(false);
 
         const iframe = areaSpotify.querySelector("iframe");
-        if (iframe) iframe.title = "Player do Spotify: Máquina do Tempo, de Matuê";
+        if (iframe) iframe.title = "Player do Spotify: Oh My Baby, de Brandão";
 
         // Mantém o nosso botão sincronizado com os controles dentro do Spotify.
         controlador.addListener("playback_started", function () {
           atualizarBotaoMusica(true);
-          statusMusica.textContent = "Máquina do Tempo está tocando.";
+          statusMusica.textContent = "Oh My Baby está tocando.";
         });
 
         controlador.addListener("playback_update", function (evento) {
