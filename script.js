@@ -340,7 +340,13 @@ function desenharPergunta() {
   tituloPergunta.textContent = pergunta.titulo;
   opcoesResposta.replaceChildren();
 
-  pergunta.respostas.forEach(function (resposta) {
+  // Mantém a ordem visual A, B, C, D em celulares e computadores.
+  // A letra continua ligada à mesma resposta e ao gabarito do quiz.
+  const respostasOrdenadas = [...pergunta.respostas].sort(function (a, b) {
+    return a.letra.localeCompare(b.letra);
+  });
+
+  respostasOrdenadas.forEach(function (resposta) {
     const botao = document.createElement("button");
     const emoji = document.createElement("span");
     const texto = document.createElement("span");
