@@ -147,9 +147,10 @@ async function carregarDeclaracoes() {
   declarationsList.replaceChildren();
   declarationsFeedback.textContent = "";
 
+  // IMPORTANTE: Certifica-te de que o campo 'id' está incluído no .select() para sabermos qual registo apagar!
   const { data, error } = await cliente
     .from("declarations")
-    .select("nickname, message, created_at")
+    .select("id, nickname, message, created_at")
     .order("created_at", { ascending: false })
     .limit(100);
 
@@ -170,6 +171,71 @@ async function carregarDeclaracoes() {
   data.forEach(function (item) {
     const card = document.createElement("article");
     card.className = "declaration-item";
+    
+    const header = document.createElement("div");
+    header.className = "declaration-item__header";
+    
+    const name = document.createElement("h3");
+    name.textContent = item.nickname;
+    
+    const date = document.createElement("time");
+    date.dateTime = item.created_at;
+    date.textContent = new Date(item.created_at).toLocaleString("pt-BR");
+    
+    header.append(name, date);
+
+    const message = document.createElement("p");
+    message.textContent = item.message;
+
+    // Botão de excluir
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "text-button admin-delete-btn";
+    deleteButton.type = "button";
+    deleteButton.textContent = "🗑️";
+    deleteButton.style.marginTop = "10px";
+    deleteButton.style.fontSize = "0.85rem";
+    deleteButton.style.color = "#d9534f"; // Tom avermelhado subtil para o botão de apagar
+
+    // Ação ao clicar no botão de excluir
+    deleteButton.addEventListener("click", async function () {
+      if (confirm(`Tens a certeza de que queres apagar a declaração de ${item.nickname}?`)) {
+        await excluirDeclaracao(item.id, card);
+      }
+    });
+
+    card.append(header, message, deleteButton);
+    declarationsList.append(card);
+  });
+}
+
+// Nova função para remover do Supabase e da tela
+async function excluirDeclaracao(id, cardElement) {
+  const { error } = await cliente
+    .from("declarations")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    console.error("Erro ao excluir declaração:", error);
+    declarationsFeedback.textContent = "Não foi possível excluir a declaração.";
+    return;
+  }
+
+  // Remove o card visualmente da tela sem precisar recarregar a página toda
+  cardElement.remove();
+  
+  // Se a lista ficar vazia, mostra a mensagem de vazio
+  if (!declarationsList.children.length) {
+    const empty = document.createElement("p");
+    empty.className = "admin-muted";
+    empty.textContent = "Ainda não chegaram declarações. 💌";
+    declarationsList.append(empty);
+  }
+}
+
+  data.forEach(function (item) {
+    const card = document.createElement("article");
+    card.className = "declaration-item";
     const header = document.createElement("div");
     header.className = "declaration-item__header";
     const name = document.createElement("h3");
@@ -183,7 +249,7 @@ async function carregarDeclaracoes() {
     card.append(header, message);
     declarationsList.append(card);
   });
-}
+
 
 function adicionarCelula(tbody, texto, colspan) {
   const row = document.createElement("tr");
